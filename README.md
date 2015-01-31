@@ -2,13 +2,16 @@
 Study on acceptance systematics for Bana analysis
 
 ## Notice for the storage
-All the executive codes are in /Code
+
+* All the executive codes are in /Code
+
+* In step 4, you will spend many hours depending on the number of toy.(more than 8 hours for 50k,maybe?)
 
 ## Prerequisite
 This study is started from dsigma/dpt or dsigma/dy from data and MC.
 Please prepare input files refering root files in /Inputfileforreweighting.
 
-## Step 1. prerequisite - get the differential cross sections of MC and data exclusively
+## Step 1. Prerequisite - get the differential cross sections of MC and data exclusively
 
 Already resulted files were copied from B analysis directory and stored in /Inputfileforreweighting.
 
@@ -20,5 +23,13 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 
 * resulted file : FunctionsReweighting_Bplus(Bzero).root
 
-## Step 3. 
+## Step 3. Run toy MC
+
+* running mechanism
+	* In step 2, we have the cenral value of ratio and related error in each bin. In this code, we will varied all the central value in each bin within error. And variation is followed by gaussian function in which the central value and error is set as the mean and sigma.
+	* And every each event, we can get the weighting function from fitting with randomly produced points. So for example if the number of randomly generated events is 100k, you can get the fitting functions with 100k caried parameter sets.
+
+* usage
+	* for Bplus
+
 
