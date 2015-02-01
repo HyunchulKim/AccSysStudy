@@ -50,7 +50,7 @@ void FakeInput_Bzero(){
 
 	///////////////////////////////////////////////////////
   
-  TFile*fout=new TFile("InputFilesMCData_Bzero.root","recreate");
+  TFile*fout=new TFile("../Results/InputFilesMCData_Bzero.root","recreate");
   fout->cd();
   hPtData->Write();
   hPtMC->Write();
@@ -59,7 +59,7 @@ void FakeInput_Bzero(){
 
 /////////////////////////////////////////////////////////////
 
-  TFile* fin = new TFile("InputFilesMCData_Bzero.root","read");
+  TFile* fin = new TFile("../Results/InputFilesMCData_Bzero.root","read");
 
   hPtData=(TH1D*)fin->Get("hPtData");
   hPtMC=(TH1D*)fin->Get("hPtMC");
@@ -99,7 +99,7 @@ void FakeInput_Bzero(){
   hPtData->Draw("samepe");
   leg11->Draw();
   pt11->Draw();
-  canvas11->SaveAs("AccSys_CompNormUncorYield_Bzero.pdf");
+  canvas11->SaveAs("../Results/AccSys_CompNormUncorYield_Bzero.pdf");
 
   hReweightDataOverMC_Pt->SetMinimum(0.6);
   hReweightDataOverMC_Pt->SetMaximum(1.8);
@@ -125,7 +125,7 @@ void FakeInput_Bzero(){
   pt11->SetBorderSize(0);
   pt11->AddText("B^{0}");
   pt11->Draw();
-  canvas11->SaveAs("AccSys_RatioNormUncorYield_Bzero.pdf");
+  canvas11->SaveAs("../Results/AccSys_RatioNormUncorYield_Bzero.pdf");
 
 /*
   TF1 *fexpoPtData = new TF1("fexpoPtData","TMath::Exp([0]-x*[1])",10.0,60.0);
@@ -178,7 +178,7 @@ void FakeInput_Bzero(){
   fRexpoPt2->Draw("same");
   fRfitft_Bzeropt->SetLineColor(kGreen);
   hReweightDataOverMC_Pt->Fit("fRfitft_Bzeropt"); 
-  canvas->SaveAs("FitstoRatioDataMC_Bzero.pdf");
+  canvas->SaveAs("../Results/FitstoRatioDataMC_Bzero.pdf");
   for (int i=0;i<5;i++) {
     std::cout << i << ": " << hReweightDataOverMC_Pt->GetBinContent(i+1) << " , " << hReweightDataOverMC_Pt->GetBinError(i+1) << std::endl;
   }
@@ -229,13 +229,13 @@ void FakeInput_Bzero(){
   //fRexpoy2->Draw("same");
   //fRexpoy3->SetLineColor(kGreen);
   //hReweightDataOverMC_y->Fit("fRexpoy3"); 
-  canvas2->SaveAs("FitstoRatioDataMC_3_20141031_v2.pdf");
+  canvas2->SaveAs("../Results/FitstoRatioDataMC_3_20141031_v2.pdf");
   for (int i=0;i<5;i++) {
     std::cout << i << ": " << hReweightDataOverMC_y->GetBinContent(i+1) << " , " << hReweightDataOverMC_y->GetBinError(i+1) << std::endl;
   }
 */
 
-  TFile* fout2 = new TFile("FunctionsReweighting_Bzero.root","recreate");
+  TFile* fout2 = new TFile("../Results/FunctionsReweighting_Bzero.root","recreate");
   fout2->cd();
   hPtData->Write();
   hPtMC->Write();

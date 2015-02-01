@@ -61,11 +61,11 @@ void FakeInput_Bplus(){
 	c->cd(2);hPtMC->Draw();
 	c->cd(3);hyData->Draw();
 	c->cd(4);hyMC->Draw();
-	c->SaveAs("prova_Bplus.pdf");
+	c->SaveAs("../Results/prova_Bplus.pdf");
 
 	////////////////////////////////////////////
 
-	TFile*fout=new TFile("InputFilesMCData_Bplus.root","recreate");
+	TFile*fout=new TFile("../Results/InputFilesMCData_Bplus.root","recreate");
 	fout->cd();
 	hPtData->Write();
 	hPtMC->Write();
@@ -77,7 +77,7 @@ void FakeInput_Bplus(){
 
 	////////////////////////////////////////////////////////////
 
-	TFile* fin = new TFile("InputFilesMCData_Bplus.root","read");
+	TFile* fin = new TFile("../Results/InputFilesMCData_Bplus.root","read");
 
 	hPtData=(TH1D*)fin->Get("hPtData");
 	hPtMC=(TH1D*)fin->Get("hPtMC");
@@ -123,7 +123,7 @@ void FakeInput_Bplus(){
 	hPtData->Draw("samepe");
 	leg11->Draw();
 	pt11->Draw();
-	canvas11->SaveAs("AccSys_CompNormUncorYield_Bplus.pdf");
+	canvas11->SaveAs("../Results/AccSys_CompNormUncorYield_Bplus.pdf");
 
 	hReweightDataOverMC_Pt->SetMinimum(0.6);
 	hReweightDataOverMC_Pt->SetMaximum(1.8);
@@ -149,7 +149,7 @@ void FakeInput_Bplus(){
 	pt11->SetBorderSize(0);
 	pt11->AddText("B^{+}");
 	pt11->Draw();
-	canvas11->SaveAs("AccSys_RatioNormUncorYield_Bplus.pdf");
+	canvas11->SaveAs("../Results/AccSys_RatioNormUncorYield_Bplus.pdf");
 
 	for (int i=0;i<5;i++) {
 		std::cout << i << ": " << hReweightDataOverMC_Pt->GetBinContent(i+1) << " , " << hReweightDataOverMC_Pt->GetBinError(i+1) << std::endl;
@@ -185,7 +185,7 @@ void FakeInput_Bplus(){
 	pt11->SetBorderSize(0);
 	pt11->AddText("B^{0}");
 	pt11->Draw();
-	canvas11->SaveAs("AccSys_CompNormUncorYield_Bplusy.pdf");
+	canvas11->SaveAs("../Results/AccSys_CompNormUncorYield_Bplusy.pdf");
 
 	hReweightDataOverMC_y->SetMinimum(0.6);
 	hReweightDataOverMC_y->SetMaximum(1.8);
@@ -211,7 +211,7 @@ void FakeInput_Bplus(){
 	pt11->SetBorderSize(0);
 	pt11->AddText("B^{+}");
 	pt11->Draw();
-	canvas11->SaveAs("AccSys_RatioNormUncorYield_Bplusy.pdf");
+	canvas11->SaveAs("../Results/AccSys_RatioNormUncorYield_Bplusy.pdf");
 
 	for (int i=0;i<5;i++) {
 		std::cout << i << ": " << hReweightDataOverMC_y->GetBinContent(i+1) << " , " << hReweightDataOverMC_y->GetBinError(i+1) << std::endl;
@@ -266,7 +266,7 @@ void FakeInput_Bplus(){
 	fRexpoPt2->Draw("same");
 	fRfitft_Bpluspt->SetLineColor(kGreen);
 	hReweightDataOverMC_Pt->Fit("fRfitft_Bpluspt"); 
-	canvas->SaveAs("FitstoRatioDataMC_Bplus.pdf");
+	canvas->SaveAs("../Results/FitstoRatioDataMC_Bplus.pdf");
 
 	// Prove y dependence results in one canvas
 
@@ -305,11 +305,11 @@ void FakeInput_Bplus(){
 	//fRfitft_Bplusy->Draw("same");
 	fRy2->Draw("same");
 
-	canvas2->SaveAs("FitstoRatioDataMC_Bplusy.pdf");
+	canvas2->SaveAs("../Results/FitstoRatioDataMC_Bplusy.pdf");
 */
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	TFile* fout2 = new TFile("FunctionsReweighting_Bplus.root","recreate");
+	TFile* fout2 = new TFile("../Results/FunctionsReweighting_Bplus.root","recreate");
 	fout2->cd();
 	hPtData->Write();
 	hPtMC->Write();
