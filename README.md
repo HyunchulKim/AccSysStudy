@@ -39,4 +39,28 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 
 ## Step 4. Run toy MC
 
+* Now we would run the acceptance analyzer with different set of weighting function. For example, the number of toy event is 100k, we could get the 100k set of acceptance results.
 
+* In acceptance code, please add following parts. (For you, I will upload the example acceptance code soon.)
+
+	* Call root file with toy study results. 
+  TFile *ratiofile = new TFile("../Results/RunMCtoy_gaus_wBpluspt_try100k.root");
+
+	* Call parameters of each fitting function. 
+  TTree *anar = (TTree*)ratiofile->Get("ditTree"); 
+  double a1,a2; 
+  anar->SetBranchAddress("a1", &a1); 
+  anar->SetBranchAddress("a2", &a2); 
+
+	* For loop for acceptance calculation, please cover the old loop with "vari" for loop.  
+  for(int vari=0;vari<anar->GetEntries();vari++) { 
+    if (vari%1000==0) std::cout << "### vari : " << vari << " time: " << time(0) << std::endl; 
+    anar->GetEntry(vari); 
+    double vara1=a1; 
+    double vara2=a2; 
+
+	* In the part of setting "w_Diffgen", please add set that with parameters from RunMCtoy root file. 
+  if (optionB == 100) {w_Diffgen = vara1*dtri_pt+vara2;} 
+
+	* For loop for acceptance calculation, please cover the old loop with "vari" for loop. 
+  } 
