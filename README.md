@@ -3,7 +3,9 @@ Study on acceptance systematics for Bana analysis
 
 ## Notice for the storage
 
-* All the executive codes are in /Code
+* All the executive codes are in /Code.
+
+* All the resulted files would be stored in /Results, if this directory is not made, please make direcotry here.
 
 * In step 4, you will spend many hours depending on the number of toy.(more than 8 hours for 50k,maybe?)
 
