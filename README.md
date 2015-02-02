@@ -39,7 +39,7 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 
 ## Step 4. Run toy MC
 
-* Now we would run the acceptance analyzer with different set of weighting function. For example, the number of toy event is 100k, we could get the 100k set of acceptance results.
+* Now we would run the acceptance analyzer with different set of weighting function. For example, the number of toy event is 100k, we could get the 100k set of acceptance results.(and plus one event which is not applied)
 
 * In acceptance code, please add following parts. (For you, I will upload the example acceptance code soon.)
 
@@ -52,15 +52,20 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
   anar->SetBranchAddress("a1", &a1); 
   anar->SetBranchAddress("a2", &a2); 
 
-	* For loop for acceptance calculation, please cover the old loop with "vari" for loop.  
-  for(int vari=0;vari<anar->GetEntries();vari++) { 
+	* For loop for acceptance calculation, please cover the old loop with "vari" for loop. The reason is GetEntries()+1 is for additional event without weighting(that is acceptance cetral value). 
+
+  for(int vari=0;vari<anar->GetEntries()+1;vari++) { 
     if (vari%1000==0) std::cout << "### vari : " << vari << " time: " << time(0) << std::endl; 
     anar->GetEntry(vari); 
     double vara1=a1; 
     double vara2=a2; 
 
 	* In the part of setting "w_Diffgen", please add set that with parameters from RunMCtoy root file. 
-  if (optionB == 100) {w_Diffgen = vara1*dtri_pt+vara2;} 
+  if (optionB == 100) {
+	if (vari==anar->GetEntries()) w_Diffgen = 1.0; else w_Diffgen = vara1*dtri_pt+vara2;
+	} 
 
 	* For loop for acceptance calculation, please cover the old loop with "vari" for loop. 
   } 
+
+## Step 5. Get the acceptance systematics (update later)
