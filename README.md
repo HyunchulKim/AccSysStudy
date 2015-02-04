@@ -68,4 +68,20 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 	* For loop for acceptance calculation, please cover the old loop with "vari" for loop. 
   } 
 
-## Step 5. Get the acceptance systematics (update later)
+## Step 5. Get the acceptance systematics
+
+* usage : root -l -b -q 'OniaAccAnalyzer_20150204.C+(1, 1, 1, 0.0, "PtYbinBp", true, 521, -999, -999, 321, "BanaAcc_IDfilters_intot100M_20150204_default", 0.0, 100.0, -2.4, 2.4, 10.0, 60.0, -2.4, 2.4, 521, 0.9)' 
+
+* important parameter is 3rd parameter : 1(no weight), 100(1st polynomial function with pt dependence), 200(2nd polynomial function with y dependence) 
+
+* In this directory, for y dependence I put the previous stored files.
+
+## Step 6. Get the acceptance variation with weighting (later update again)
+
+* usage : root -l -b -q GetAccSys_Bplus.C+
+
+* From the result form this code, the maximum distance between central accetpance value without weighting and (mimimum of maxmimum acceptance value).
+
+	* For example MinVal : 0.348257 , Mean : 0.350247 , MaxVal : 0.352957 - Central value : 0.358257
+	
+		* acceptance systematics : |0.358257-0.348257|=0.01
