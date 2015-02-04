@@ -58,16 +58,16 @@ void GetAccSys_Bplus() {
 	TH1D* hay1gaus=new TH1D("hay1gaus",";[0] ([0](y+0.465)^{2}+[1]);Entries",200,-0.15,0.25);
 	TH1D* hay2gaus=new TH1D("hay2gaus",";[1] ([0](y+0.465)^{2}+[1]);Entries",250,0.6,1.1);
 
-  TFile* fin_AccDef = new TFile("../InputAccFiles/AccAna_PtYbinBp_nowt_Bu_boosted_BanaAcc_IDfilters_intot100M_20150204_default.root");
+	TFile* fin_AccDef = new TFile("../InputAccFiles/AccAna_PtYbinBp_nowt_Bu_boosted_BanaAcc_IDfilters_intot100M_20150204_default.root");
 
-  TH1F* hAcc1TriPtBin_AccDef = (TH1F*)fin_AccDef->Get("hAcc1TriPtBin_PtYbinBp");
-  TH1F* hAcc1TriYBin_AccDef = (TH1F*)fin_AccDef->Get("hAcc1TriYBin_PtYbinBp");
+	TH1F* hAcc1TriPtBin_AccDef = (TH1F*)fin_AccDef->Get("hAcc1TriPtBin_PtYbinBp");
+	TH1F* hAcc1TriYBin_AccDef = (TH1F*)fin_AccDef->Get("hAcc1TriYBin_PtYbinBp");
 	double avghpt[5];
 	double avghy[5];
 	for (int i=0;i<5;i++) {
-	avghpt[i]=hAcc1TriPtBin_AccDef->GetBinContent(i+1);
-	avghy[i]=hAcc1TriYBin_AccDef->GetBinContent(i+1);
-}
+		avghpt[i]=hAcc1TriPtBin_AccDef->GetBinContent(i+1);
+		avghy[i]=hAcc1TriYBin_AccDef->GetBinContent(i+1);
+	}
 
 	//double avghpt[5]={0.2458,0.4240,0.5134,0.6468,0.7215};
 	//double avghy[5]={0.3395,0.3186,0.2486,0.3189,0.3422};
@@ -141,15 +141,15 @@ void GetAccSys_Bplus() {
 		p11->SetY2NDC(0.90);
 		p11->SetTextColor(kRed+2);
 		/*
-			 hpullf12pt[i]->Draw();
-			 gPad->Update();
-			 TPaveStats* p12 = (TPaveStats*)hpullf12pt[i]->FindObject("stats");
-			 p12->SetX1NDC(0.70);
-			 p12->SetY1NDC(0.60);
-			 p12->SetX2NDC(0.90);
-			 p12->SetY2NDC(0.75);
-			 p12->SetTextColor(kOrange+7);
-		 */
+		   hpullf12pt[i]->Draw();
+		   gPad->Update();
+		   TPaveStats* p12 = (TPaveStats*)hpullf12pt[i]->FindObject("stats");
+		   p12->SetX1NDC(0.70);
+		   p12->SetY1NDC(0.60);
+		   p12->SetX2NDC(0.90);
+		   p12->SetY2NDC(0.75);
+		   p12->SetTextColor(kOrange+7);
+		   */
 		hpullf21pt[i]->Draw();
 		gPad->Update();
 		TPaveStats* p21 = (TPaveStats*)hpullf21pt[i]->FindObject("stats");
@@ -159,15 +159,15 @@ void GetAccSys_Bplus() {
 		p21->SetY2NDC(0.60);
 		p21->SetTextColor(kBlue);
 		/*
-			 hpullf22pt[i]->Draw();
-			 gPad->Update();
-			 TPaveStats* p22 = (TPaveStats*)hpullf22pt[i]->FindObject("stats");
-			 p22->SetX1NDC(0.70);
-			 p22->SetY1NDC(0.30);
-			 p22->SetX2NDC(0.90);
-			 p22->SetY2NDC(0.45);
-			 p22->SetTextColor(kTeal+3);
-		 */
+		   hpullf22pt[i]->Draw();
+		   gPad->Update();
+		   TPaveStats* p22 = (TPaveStats*)hpullf22pt[i]->FindObject("stats");
+		   p22->SetX1NDC(0.70);
+		   p22->SetY1NDC(0.30);
+		   p22->SetX2NDC(0.90);
+		   p22->SetY2NDC(0.45);
+		   p22->SetTextColor(kTeal+3);
+		   */
 		//TLegend* leg1 = new TLegend(0.12,0.7,0.4,0.88);
 		TLegend* leg1 = new TLegend(0.15,0.80,0.48,0.93);
 
@@ -434,17 +434,11 @@ void GetAccSys_Bplus() {
 	//////////////////////
 	leg1->Clear();
 	leg1->AddEntry(htest11,"p_{T} variation with gaussian","l");
-	std::cout << "1" << std::endl;
 	maxusera1 = std::max(htest11->GetMaximum(),htest11->GetMaximum());
-		std::cout << "1" << std::endl;
-htest11->GetYaxis()->SetRangeUser(0.0,1.2*maxusera1);
-		std::cout << "1" << std::endl;
-maxuseray1 = std::max(htest21->GetMaximum(),htest21->GetMaximum());
-		std::cout << "1" << std::endl;
-htest21->GetYaxis()->SetRangeUser(0.0,1.2*maxuseray1);
-
-		std::cout << "1" << std::endl;
-htest11->Draw();
+	htest11->GetYaxis()->SetRangeUser(0.0,1.2*maxusera1);
+	maxuseray1 = std::max(htest21->GetMaximum(),htest21->GetMaximum());
+	htest21->GetYaxis()->SetRangeUser(0.0,1.2*maxuseray1);
+	htest11->Draw();
 
 	gPad->Update();
 	TPaveStats* pht11 = (TPaveStats*)htest11->FindObject("stats");

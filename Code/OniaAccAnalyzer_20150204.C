@@ -646,8 +646,9 @@ void OniaAccAnalyzer_20150204(int optionBinning = 1, int optionA = 1, int option
 	else ratiofile = new TFile("test_20141031_gaus_try10k.root");
 */
 	if (optionB==100) ratiofile = new TFile("../Results/RunMCtoy_gaus_wBpluspt_try100k.root");
-	if (optionB==200) ratiofile = new TFile("../Results/test_20141031_gaus_ydep_try10k.root");
-	else ratiofile = new TFile("../Results/test_20141031_gaus_try10k.root");
+	else if (optionB==200) ratiofile = new TFile("../Results/test_20141031_gaus_ydep_try10k.root");
+	else ratiofile = new TFile("../Results/RunMCtoy_gaus_wBpluspt_try100k.root");
+
 	TTree *anar = (TTree*)ratiofile->Get("ditTree");
 	double a1,a2;
 	if (optionB==100) {

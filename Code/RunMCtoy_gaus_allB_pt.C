@@ -72,6 +72,7 @@ for (int i=0;i<nBinsv;i++) {
 		getfit();
 	}
 	fOut->Write();
+	htest->Write();
 	fOut->Close();
 }
 
