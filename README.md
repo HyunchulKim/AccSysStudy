@@ -27,7 +27,7 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 
 * resulted file : FunctionsReweighting_Bplus(Bzero).root
 
-## Step 3. Run gaussian random generator and get the various set of weighting function
+## Step 3. Run gaussian random generator and get the various set of weighting function from toy MC
 
 * running mechanism
 	* In step 2, we have the cenral value of ratio and related error in each bin. In this code, we will varied all the central value in each bin within error. And variation is followed by gaussian function in which the central value and error is set as the mean and sigma.
@@ -37,7 +37,7 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 	* for pt binning : root -l -b -q 'RunMCtoy_gaus_allB_pt.C+(0(1),100)'
 		* parameter : which source? - 0(Bplus), 1(Bzero), how many trials of toy? unit : k - ex. 100k => just enter 100 
 
-## Step 4. Run toy MC
+## Step 4. Get the acceptance distributions with set of different weighting functions from toy MC in each analysis bin.
 
 * Now we would run the acceptance analyzer with different set of weighting function. For example, the number of toy event is 100k, we could get the 100k set of acceptance results.(and plus one event which is not applied)
 
@@ -68,15 +68,15 @@ Already resulted files were copied from B analysis directory and stored in /Inpu
 	* For loop for acceptance calculation, please cover the old loop with "vari" for loop. 
   } 
 
-## Step 5. Get the acceptance systematics
+* You can get the help from acceptance code for B analysis.
 
-* usage : root -l -b -q 'OniaAccAnalyzer_20150204.C+(1, 1, 1, 0.0, "PtYbinBp", true, 521, -999, -999, 321, "BanaAcc_IDfilters_intot100M_20150204_default", 0.0, 100.0, -2.4, 2.4, 10.0, 60.0, -2.4, 2.4, 521, 0.9)' 
+	* usage : root -l -b -q 'OniaAccAnalyzer_20150204.C+(1, 1, 1, 0.0, "PtYbinBp", true, 521, -999, -999, 321, "BanaAcc_IDfilters_intot100M_20150204_default", 0.0, 100.0, -2.4, 2.4, 10.0, 60.0, -2.4, 2.4, 521, 0.9)' 
 
-* important parameter is 3rd parameter : 1(no weight), 100(1st polynomial function with pt dependence), 200(2nd polynomial function with y dependence) 
+	* important parameter is 3rd parameter : 1(no weight), 100(1st polynomial function with pt dependence), 200(2nd polynomial function with y dependence) 
 
-* In this directory, for y dependence I put the previous stored files.
+	* In this directory, for y dependence I put the previous stored files.
 
-## Step 6. Get the acceptance variation with weighting (later update again)
+## Step 5. Get the acceptance variation with weighting (later update again)
 
 * usage : root -l -b -q GetAccSys_Bplus.C+
 
